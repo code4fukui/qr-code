@@ -1,6 +1,9 @@
 # qr-code
 
-qr-code tag
+- qr-code tag
+- https://code4fukui.github.io/qr-code/
+
+## usage
 
 ```html
 <script type="module" src="https://code4fukui.github.io/qr-code/qr-code.js"></script>
