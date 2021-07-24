@@ -1,9 +1,9 @@
 import { QR } from "https://taisukef.github.io/qrcode-generator/es/QR.js";
 
 class QRCode extends HTMLElement {
-  constructor () {
+  constructor (param) {
     super();
-    const val = this.textContent.trim() || document.location.href;
+    const val = this.textContent.trim() || param || document.location.href;
     this.textContent = "";
     const errCorrectionLevel = 0; //  0: L, 1: M, 2: Q, 3: H
     // typeNumber 1 to 40
