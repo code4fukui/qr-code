@@ -3,12 +3,29 @@
 
 <h1>qr-code tag demo</h1>
 
+<h2>input</h2>
+<input id=input><br>
+<qr-code id=qrinput></qr-code>
+<script type="module">
+input.onkeyup = input.onchange = () => {
+  qrinput.textContent = input.value;
+  document.location.hash = input.value;
+};
+</script>
+
 <h2>this URL</h2>
 <script type="module" src="./qr-code.js"></script>
 <qr-code></qr-code>
 
 <h2>textContent</h2>
 <qr-code>https://code4fukui.github.io/</qr-code>
+
+<h2>hash</h2>
+<div id=hash></div>
+<script type="module">
+import { QRCode } from "./qr-code.js";
+hash.appendChild(new QRCode(document.location.hash.substring(1)));
+</script>
 
 <hr>
 <a href=https://github.com/code4fukui/qr-code/>src on GitHub by Code for FUKUI</a>
