@@ -7,6 +7,7 @@ class QRCode extends HTMLElement {
   }
   set(param) {
     const val = this.textContent.trim() || param || document.location.href;
+    this.val = val;
     this.textContent = "";
     const errCorrectionLevel = 0; //  0: L, 1: M, 2: Q, 3: H
     // typeNumber 1 to 40
@@ -57,6 +58,9 @@ class QRCode extends HTMLElement {
   set value(param) {
     //console.log("param", param)
     this.set(param);
+  }
+  get value() {
+    return this.val;
   }
 }
 
