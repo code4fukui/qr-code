@@ -1,11 +1,18 @@
 import { QR } from "https://taisukef.github.io/qrcode-generator/es/QR.js";
+import { fetchBin } from "https://js.sabae.cc/fetchBin.js";
 
 class QRCode extends HTMLElement {
-  constructor (param) {
+  constructor(param) {
     super();
     this.set(param);
   }
-  set(param) {
+  async set(param) {
+    const src = this.getAttribute("src");
+    if (!param && src) {
+      const val = await fetchBin(src);
+      this.set(val);
+      return;
+    }
     const val = this.textContent.trim() || param || document.location.href;
     this.val = val;
     this.textContent = "";
