@@ -8,7 +8,7 @@
 <qr-code id=qrinput></qr-code>
 <script type="module">
 input.onkeyup = input.onchange = () => {
-  qrinput.textContent = input.value;
+  qrinput.value = input.value;
   document.location.hash = input.value;
 };
 </script>

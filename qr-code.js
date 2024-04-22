@@ -55,12 +55,14 @@ class QRCode extends HTMLElement {
     const imgdata = new ImageData(idata, qw, qw);
     g.putImageData(imgdata, 0, 0);
     
+    /*
     // check change
     const observer = new MutationObserver(() =>  {
       observer.disconnect();
       this.set();
     });
     observer.observe(this, { subtree: true, childList: true });
+    */
   }
   set value(param) {
     //console.log("param", param)
