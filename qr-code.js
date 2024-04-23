@@ -24,7 +24,7 @@ class QRCode extends HTMLElement {
     const iw = data.length;
   
     const w = 4;
-    const r = 4;
+    const r = this.getAttribute("dotsize") || 4;
     const qw = (iw + w * 2) * r;
     
     const canvas = document.createElement("canvas");
