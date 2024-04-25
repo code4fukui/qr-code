@@ -12,6 +12,18 @@ input.onkeyup = input.onchange = () => {
   document.location.hash = input.value;
 };
 </script>
+<br>
+<button id=btn>toSVG</button>
+<script type="module">
+import { downloadFile } from "https://js.sabae.cc/downloadFile.js";
+
+btn.onclick = () => {
+  const svg = qrinput.toSVG();
+  downloadFile("qr.svg", svg);
+};
+</script>
+
+
 
 <h2>this URL</h2>
 <script type="module" src="./qr-code.js"></script>

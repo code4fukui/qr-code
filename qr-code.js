@@ -1,5 +1,6 @@
 import { QR } from "https://taisukef.github.io/qrcode-generator/es/QR.js";
 import { fetchBin } from "https://js.sabae.cc/fetchBin.js";
+import { qrdata2svg } from "./qrdata2svg.js";
 
 class QRCode extends HTMLElement {
   constructor(param) {
@@ -43,8 +44,8 @@ class QRCode extends HTMLElement {
       for (let j = 0; j < iw; j++) {
         const c = data[i][j] ? 0 : 255;
         for (let k = 0; k < r * r; k++) {
-          const x = (i + w) * r + Math.floor(k / r);
-          const y = (j + w) * r + (k % r);
+          const x = (j + w) * r + (k % r);
+          const y = (i + w) * r + Math.floor(k / r);
           idata[(x + y * qw) * 4] = c;
           idata[(x + y * qw) * 4 + 1] = c;
           idata[(x + y * qw) * 4 + 2] = c;
@@ -70,6 +71,11 @@ class QRCode extends HTMLElement {
   }
   get value() {
     return this.val;
+  }
+  toSVG(dotw = 10) {
+    const data = QR.encode(this.val);
+    const svg = qrdata2svg(data, dotw);
+    return svg;
   }
 }
 
