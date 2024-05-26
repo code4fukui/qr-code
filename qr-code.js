@@ -16,6 +16,15 @@ class QRCode extends HTMLElement {
     }
     const val = this.textContent.trim() || param || document.location.href;
     this.val = val;
+    if (val == location.href) {
+      if (!this.callback) {
+        this.callback = () => this.set();
+        addEventListener("hashchange", this.callback);
+      }
+    } else if (this.callback) {
+      removeEventListener("hashchange", this.callback);
+      this.callback = null;
+    }
     this.textContent = "";
     const errCorrectionLevel = 0; //  0: L, 1: M, 2: Q, 3: H
     // typeNumber 1 to 40
