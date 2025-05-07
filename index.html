@@ -40,7 +40,29 @@ hash.appendChild(new QRCode(document.location.hash.substring(1)));
 </script>
 
 <h2>dotsize</h2>
-<qr-code dotsize=40 style="width: 300px">https://code4fukui.github.io/</qr-code>
+<qr-code dotsize=8 style="width: 300px">https://code4fukui.github.io/</qr-code>
+
+<h2>multi</h2>
+<div id=multi1></div>
+<div>["HTTPS://FUKUNO.JIG.JP/",     "4669000000000000000000000000000000000"]</div>
+<div id=multi2></div>
+<div>["https", "://FUKUNO.JIG.JP/", "46690000000000000000000000000"]</div>
+<div id=multi3></div>
+<div>["https://fukuno.jig.jp/",     "466900000000000000000"]</div>
+<div id=multi4></div>
+<div>"https://fukuno.jig.jp/4669000000"</div>
+<div id=multi5></div>
+<div>["HTTPS://FUKUNO.JIG.JP/",     Base10.decode("4669000000000000000000000000000000000")]</div>
+<script type="module">
+import { QRCode } from "./qr-code.js";
+import { Base10 } from "https://code4fukui.github.io/Base10/Base10.js";
+
+multi1.appendChild(new QRCode(["HTTPS://FUKUNO.JIG.JP/",               "4669000000000000000000000000000000000"])); // 37 ok
+multi2.appendChild(new QRCode(["https", "://FUKUNO.JIG.JP/",           "46690000000000000000000000000"])); // 29 ok
+multi3.appendChild(new QRCode(["https://fukuno.jig.jp/",               "466900000000000000000"])); // 21 ok
+multi4.appendChild(new QRCode(                   "https://fukuno.jig.jp/4669000000")); // 10 ok
+multi5.appendChild(new QRCode(["HTTPS://FUKUNO.JIG.JP/", Base10.decode("466900000000000000000000000000000000")])); // 36 ng
+</script>
 
 <hr>
 <a href=https://github.com/code4fukui/qr-code/>src on GitHub by Code for FUKUI</a>
